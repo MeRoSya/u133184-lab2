@@ -16,14 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Customer::factory(100)->create()
-            ->each(function ($customer)
-        {
-            $addresses = Address::factory(rand(1, 4))->make();
+            ->each(function ($customer) {
+                $addresses = Address::factory(rand(1, 4))->make();
 
-            foreach ($addresses as $address)
-            {
-                $customer->address()->save($address);
-            }
-        });
+                foreach ($addresses as $address) {
+                    $customer->address()->save($address);
+                }
+            });
     }
 }

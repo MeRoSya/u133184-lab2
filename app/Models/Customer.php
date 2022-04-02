@@ -26,6 +26,6 @@ class Customer extends Model
 
     public function address(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Address::class);
+        return $this->hasMany(Address::class)->latest();
     }
 }
