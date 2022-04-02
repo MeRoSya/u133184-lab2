@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('customers');
 });
+
+Route::get('/customers', ['as' => 'customers', 'uses' => 'App\Http\Controllers\CustomerController@filter']);
+
+Route::get('/customers/{id}', ['as' => 'customerInfo', 'uses' => 'App\Http\Controllers\CustomerController@show']);
