@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
-    public function show($id)
+    public function show($id): View|string
     {
         $customer = Customer::where('id', $id)->with('address')->get()->first();
 
@@ -19,7 +20,7 @@ class CustomerController extends Controller
             return "Customer not found";
     }
 
-    public function filter(Request $request)
+    public function filter(Request $request): View
     {
         $filters = [
             'name' => $request->get('name'),
